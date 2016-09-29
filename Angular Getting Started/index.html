@@ -1,64 +1,26 @@
 <!DOCTYPE html>
 <html ng-app="githubviewer">
-  <head>
-    <meta charset="UTF-8">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="MainController.js"></script>
+    <script src="UserController.js"></script>
+
     <title>Angular JS Getting Started</title>
-  </head>
-  <body>
-    
-      <h1>Github Viewer</h1>
-      <div ng-view></div>
-      
-      
-      
-  <div ng-controller="GithubController">
-      <h1>{{countdown}}</h1>
-      <form name="searchUser" ng-submit="search()">
-        <input type="search" placeholder="Username to search" ng-model="username" required/>
-          <input type="submit" value="Search"/>
-      
-      </form>
-     
-      
-      <div ng-hide="!user">
-      <h1>User Details Retrieved</h1><br />
-      
-      Order:
-      <select ng-model="repoSortOrder">
-        <option value="+name">Ascending</option>
-          <option value="-name">Descending</option>
-      </select>
-      <div id="userDetails">
-      <img ng-src="{{user.avatar_url}}"/><br />
-      {{user.name}}
-       
-      
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="repo in repos |orderBy:repoSortOrder">
-                <td>{{repo.name}}</td>
-                </tr>
-          </tbody>
-      
-      </table>
-          </div>
-      
-      </div>
-  </div>
-      
-      
-      
-      
-      <script src="controllers/app.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
-      <script src="./js/angular-route.min.js"></script>
-      
-      <script src="controllers/githubviewer.js"></script>
-      <script src="/js/github.js"></script>
-  </body>
+</head>
+
+<body>
+
+    <h1>Github Viewer</h1>
+    <div ng-view>
+
+
+
+    </div>
+
+
+</body>
+
 </html>

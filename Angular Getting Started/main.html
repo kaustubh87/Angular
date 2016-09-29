@@ -1,39 +1,7 @@
-  <div>
-      <h1>{{countdown}}</h1>
-      <form name="searchUser" ng-submit="search()">
+<div>
+    {{countdown}}
+    <form name="searchUser" ng-submit="search()">
         <input type="search" placeholder="Username to search" ng-model="username" required/>
-          <input type="submit" value="Search"/>
-      
-      </form>
-     
-      
-      <div ng-hide="!user">
-      <h1>User Details Retrieved</h1><br />
-      
-      Order:
-      <select ng-model="repoSortOrder">
-        <option value="+name">Ascending</option>
-          <option value="-name">Descending</option>
-      </select>
-      <div id="userDetails">
-      <img ng-src="{{user.avatar_url}}"/><br />
-      {{user.name}}
-       
-      
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="repo in repos |orderBy:repoSortOrder">
-                <td>{{repo.name}}</td>
-                </tr>
-          </tbody>
-      
-      </table>
-          </div>
-      
-      </div>
-  </div>
+        <input type="submit" value="Search" />
+    </form>
+</div>
