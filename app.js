@@ -1,7 +1,5 @@
 (function(){
     
-    var app = angular.module("githubviewer", ["ngRoute"]);
-    
     app.config(function($routeProvider){
         
         $routeProvider
