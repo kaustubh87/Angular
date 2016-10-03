@@ -1,33 +1,46 @@
 (function () {
 
-    var app = angular.module("githubviewer",[]);
+    var app = angular.module("githubviewer");
 
-    var MainController = function($scope, $http) {
+    var MainController = function($scope, $interval,$location) {
 
-        $scope.search = function(){
+        
+        var countDownInterval = null;
+        
+        var startCountDown = function(){
+            countDownInterval = $interval(decrementCountDown, 1000, $scope.countdown);
+        }
+        
+        var decrementCountDown = function(){
+            $scope.countdown -= 1;
+            if($scope.countdown<1){
+                $scope.search($scope.username);
+            }
+            
+        }
+        
+        
+        $scope.search = function(username){
           
             //console.log("Hello World");
             
-            $http.get("https://api.github.com/users/kaustubh87").then(getUserDetails, onError);
+          
+            if(countDownInterval){
+                $interval.cancel(countDownInterval);
+                $scope.countdown = null;
+            }
+            
+            $location.path("/user/", +username);
+            
        
         };
         
-        var getUserDetails = function(response){
-           $scope.user = response.data;
-            
-            $http.get($scope.user.repos_url).then(getRepoDetails, onError);
-        };
         
-        var getRepoDetails = function(response){
-            $scope.repos = response.data;
-        }
-        
-        var onError = function(error){
-          $scope.error = "Error";  
-        };
+        $scope.countdown = 5;
+        startCountDown();
 
     };
 
-    app.controller("MainController", ["$scope", "$http", MainController]);
+    app.controller("MainController" ,MainController);
 
 }());

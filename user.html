@@ -1,0 +1,24 @@
+<div ng-controller="UserController">
+      <h1>User Details Retrieved</h1><br />
+     
+      Order:
+    <div>
+      <img ng-src="{{user.avatar_url}}"/><br />
+     
+      </div>  
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="repo in repos">
+                <td>{{repo.name}}</td>
+                </tr>
+          </tbody>
+      
+      </table>
+      
+     </div>
